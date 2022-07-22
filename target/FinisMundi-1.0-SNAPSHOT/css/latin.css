@@ -1,0 +1,49 @@
+body, html {
+  background-image: url("../img/pantheon.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+tr>td {
+  border: thin solid black;
+  padding: .5em;
+}
+
+thead {
+  background-color: purple;
+  color: gold;
+}
+label {
+  position: relative;
+  left: 2em;
+}
+button:active {
+  background-color: purple;
+  color: gold;
+}
+
+[type=radio] {
+  margin: 3px;
+  background-color: whitesmoke;
+}
+
+.form-check:hover {
+  background-color: purple;
+  color: gold;
+}
+
+.form-check-input {
+  position: relative;
+  left: 3em;
+}
+
+#submit-row {
+  margin: 1em 0;
+}
+
+#gender-box {
+  display: none
+
+}
+
+

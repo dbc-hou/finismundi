@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 public class Config {
 //    public static final String JDBCDriver = "com.mysql.jdbc.Driver";
-    public static final String myDBConn = "jdbc:mysql://localhost/latin_db";
+    public static final String myDBConn = "jdbc:mysql://localhost:3306/latin";
     public static final String myDBID = "root";
     public static final String myDBPW = "codeup";
 
