@@ -1,4 +1,5 @@
 import Config.Config;
+
 import java.sql.*;
 import java.sql.Driver;
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class MySQLVerbsDAO implements VerbsDAO {
     @Override
     public List<Verb> findAll() throws SQLException {
         ArrayList<Verb> allVerbs = new ArrayList<>();
-        PreparedStatement ps = conn.prepareStatement("Select * from verbs");
+        PreparedStatement ps = conn.prepareStatement("Select * from VerbList;");
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Verb v = new Verb();

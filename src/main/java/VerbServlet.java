@@ -13,9 +13,9 @@ import java.sql.Array;
 import java.sql.SQLException;
 //import com.google.gson.Gson;
 
-@WebServlet(name = "VerbSerlet", urlPatterns = "/verbs")
+@WebServlet(name = "VerbServlet", urlPatterns = "/verbs")
 public class VerbServlet extends HttpServlet {
-    private VerbsDAO dao = new MySQLVerbsDAO();
+    private final VerbsDAO dao = new MySQLVerbsDAO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
