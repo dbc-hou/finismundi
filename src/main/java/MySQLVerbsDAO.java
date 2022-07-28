@@ -14,6 +14,7 @@ public class MySQLVerbsDAO implements VerbsDAO {
 
     public MySQLVerbsDAO() {
         try {
+//            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             DriverManager.registerDriver(new Driver() {
                 @Override
                 public Connection connect(String url, Properties info) throws SQLException {
@@ -51,9 +52,9 @@ public class MySQLVerbsDAO implements VerbsDAO {
                 }
             });
             conn = DriverManager.getConnection(
-                    Config.myDBConn,
-                    Config.myDBID,
-                    Config.myDBPW);
+                    "jdbc:mysql://localhost:3306/latin?" +
+                    "user=root&" +
+                    "password=codeup");
         } catch (SQLException e) {
             e.printStackTrace();
         }
