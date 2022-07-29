@@ -1,9 +1,10 @@
 import Config.Config;
 
+//import java.sql.*;
 import java.sql.*;
-import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.List;
+import com.mysql.cj.jdbc.Driver;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -15,42 +16,43 @@ public class MySQLVerbsDAO implements VerbsDAO {
     public MySQLVerbsDAO() {
         try {
 //            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            DriverManager.registerDriver(new Driver() {
-                @Override
-                public Connection connect(String url, Properties info) throws SQLException {
-                    return null;
-                }
-
-                @Override
-                public boolean acceptsURL(String url) throws SQLException {
-                    return false;
-                }
-
-                @Override
-                public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
-                    return new DriverPropertyInfo[0];
-                }
-
-                @Override
-                public int getMajorVersion() {
-                    return 0;
-                }
-
-                @Override
-                public int getMinorVersion() {
-                    return 0;
-                }
-
-                @Override
-                public boolean jdbcCompliant() {
-                    return false;
-                }
-
-                @Override
-                public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-                    return null;
-                }
-            });
+//            DriverManager.registerDriver(new Driver() {
+//                @Override
+//                public Connection connect(String url, Properties info) throws SQLException {
+//                    return null;
+//                }
+//
+//                @Override
+//                public boolean acceptsURL(String url) throws SQLException {
+//                    return false;
+//                }
+//
+//                @Override
+//                public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
+//                    return new DriverPropertyInfo[0];
+//                }
+//
+//                @Override
+//                public int getMajorVersion() {
+//                    return 0;
+//                }
+//
+//                @Override
+//                public int getMinorVersion() {
+//                    return 0;
+//                }
+//
+//                @Override
+//                public boolean jdbcCompliant() {
+//                    return false;
+//                }
+//
+//                @Override
+//                public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+//                    return null;
+//                }
+//            });
+            DriverManager.registerDriver(new Driver());
             conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/latin?" +
                     "user=root&" +
@@ -63,7 +65,7 @@ public class MySQLVerbsDAO implements VerbsDAO {
     @Override
     public List<Verb> findAll() throws SQLException {
         ArrayList<Verb> allVerbs = new ArrayList<>();
-        PreparedStatement ps = conn.prepareStatement("Select * from VerbList;");
+        PreparedStatement ps = conn.prepareStatement("Select * from VerbList order by FirstPart;");
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Verb v = new Verb();
@@ -76,6 +78,7 @@ public class MySQLVerbsDAO implements VerbsDAO {
             v.setNotes(rs.getString("Notes"));
 
             allVerbs.add(v);
+            System.out.println(v);
         }
         rs.close();
         ps.close();

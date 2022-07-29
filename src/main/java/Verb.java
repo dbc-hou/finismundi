@@ -72,6 +72,20 @@ public class Verb {
         this.notes = notes;
     }
 
+    @Override
+    public String toString() {
+        return "Verb{" +
+                "id=" + id +
+                ", firstPart='" + firstPart + '\'' +
+                ", secondPart='" + secondPart + '\'' +
+                ", thirdPart='" + thirdPart + '\'' +
+                ", supine='" + supine + '\'' +
+                ", conjugation='" + conjugation + '\'' +
+                ", deponency='" + deponency + '\'' +
+                ", notes='" + notes + '\'' +
+                '}';
+    }
+
     public Verb(int id, String firstPart, String secondPart, String thirdPart, String supine, String conjugation, String deponency, String notes) {
         this.id = id;
         this.firstPart = firstPart;

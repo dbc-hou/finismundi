@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Array;
 import java.sql.SQLException;
+import java.util.List;
 //import com.google.gson.Gson;
 
 @WebServlet(name = "VerbServlet", urlPatterns = "/verbs")
@@ -21,9 +22,14 @@ public class VerbServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         try {
+            response.setContentType("text/html");
             PrintWriter out = response.getWriter();
-            Object verbString = dao.findAll().toArray();
-            System.out.println(verbString);
+            List<Verb> verbs = dao.findAll();
+            out.println("<html><body>");
+            for (Verb v : verbs) {
+                out.println("<p>" + v + "</p>");
+            }
+            out.println("</body></html>");
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
