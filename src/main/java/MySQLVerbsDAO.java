@@ -78,7 +78,7 @@ public class MySQLVerbsDAO implements VerbsDAO {
             v.setNotes(rs.getString("Notes"));
 
             allVerbs.add(v);
-            System.out.println(v);
+//            System.out.println(v);
         }
         rs.close();
         ps.close();

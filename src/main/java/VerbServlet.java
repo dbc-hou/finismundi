@@ -25,13 +25,24 @@ public class VerbServlet extends HttpServlet {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             List<Verb> verbs = dao.findAll();
-            out.println("<html><body>");
+            out.println("<html lang=\"en\">\n" +
+                    "<head>\n" +
+                    "    <meta charset=\"UTF-8\"></head><body><select>");
             for (Verb v : verbs) {
-                out.println("<p>" + v + "</p>");
+                out.println("<option>" + macronToAcute(v.getFirstPart()) + ", " + macronToAcute(v.getSecondPart()) + "</option>");
             }
-            out.println("</body></html>");
+            out.println("</select></body></html>");
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private String macronToAcute (String stringIn) {
+        String stringOut = stringIn.replace("ā", "â");
+        stringOut = stringOut.replace("ē", "ê");
+        stringOut = stringOut.replace("ī", "î");
+        stringOut = stringOut.replace("ō", "ô");
+        stringOut = stringOut.replace("ū", "û");
+        return stringOut;
     }
 }
