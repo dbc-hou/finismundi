@@ -90,7 +90,7 @@ public class MySQLVerbsDAO implements VerbsDAO {
     public Verb findOne(int id) {
         Verb v = new Verb();
         try {
-            PreparedStatement ps = conn.prepareStatement("Select * from movies where id = ?");
+            PreparedStatement ps = conn.prepareStatement("Select * from VerbList where id = ?");
             ResultSet rs = ps.executeQuery();
             ps.setInt(1, id);
             rs.next();
@@ -100,7 +100,9 @@ public class MySQLVerbsDAO implements VerbsDAO {
             v.setSecondPart(rs.getString("SecondPart"));
             v.setThirdPart(rs.getString("ThirdPart"));
             v.setSupine(rs.getString("Supine"));
+            v.setConjugation(rs.getString("Conjugation"));
             v.setDeponency(rs.getString("Deponency"));
+
             v.setNotes(rs.getString("Notes"));
 
             rs.close();

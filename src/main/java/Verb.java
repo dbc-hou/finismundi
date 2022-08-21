@@ -6,6 +6,7 @@ public class Verb {
     private String supine;
     private String conjugation;
     private String deponency;
+    private String EnglishMeanings;
     private String notes;
 
     public int getId() {
@@ -62,6 +63,14 @@ public class Verb {
 
     public void setDeponency(String deponency) {
         this.deponency = deponency;
+    }
+
+    public String getEnglishMeanings() {
+        return EnglishMeanings;
+    }
+
+    public void setEnglishMeanings(String EnglishMeanings) {
+        this.EnglishMeanings = EnglishMeanings;
     }
 
     public String getNotes() {
