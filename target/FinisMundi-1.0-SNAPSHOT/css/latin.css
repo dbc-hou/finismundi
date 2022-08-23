@@ -13,10 +13,12 @@ thead {
   background-color: purple;
   color: gold;
 }
+
 label {
   position: relative;
   left: 2em;
 }
+
 button:active {
   background-color: purple;
   color: gold;
@@ -37,13 +39,30 @@ button:active {
   left: 3em;
 }
 
+.scrollable-list {
+  background-color: lightyellow;
+  border: purple;
+  overflow-y: auto;
+  height: 300px;
+  padding: 20px;
+  margin-top: 100px;
+}
+
 #submit-row {
   margin: 1em 0;
 }
 
 #gender-box {
   display: none
+}
 
+#verb-list {
+  background-color: lightyellow;
+  border: purple;
+  overflow: scroll;
+  height: 300px;
+  padding: 20px;
+  margin-top: 100px;
 }
 
 

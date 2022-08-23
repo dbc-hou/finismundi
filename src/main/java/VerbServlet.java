@@ -14,6 +14,7 @@ import java.util.List;
 @WebServlet(name = "VerbServlet", urlPatterns = "/verbs")
 public class VerbServlet extends HttpServlet {
     private final VerbsDAO dao = new MySQLVerbsDAO();
+    private final StringFunctions sf = new StringFunctions();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,17 +29,18 @@ public class VerbServlet extends HttpServlet {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             List<Verb> verbs = dao.findAll();
-            out.println("<html lang=\"en\">\n" +
-                    "<head>\n" +
-                    "    <meta charset=\"UTF-8\"><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"> <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"></script></head><body>");
-            out.println("<div id=\"verb-container\" class=\"container-flex\">");
-            out.println("<div id=\"verb-row\" class=\"row\">");
-            out.println("<div id=\"verb-list\" class=\"col-3\"><p>");
+            out.println(sf.pageHeadInfo());
+//            out.println("<html lang=\"en\">\n" +
+//                    "<head>\n" +
+//                    "    <meta charset=\"UTF-8\"><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"> <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"></script></head><body>");
+//            out.println("<div id=\"verb-container\" class=\"container-flex\">");
+//            out.println("<div id=\"verb-row\" class=\"row\">");
+//            out.println("<div id=\"verb-list\" class=\"col-3\"><p>");
 // Loop through and display all the first and second principal parts of each verb;
 // each span gets a data-id attribute from the ID of its verb.
 // Then close out the verb-list div.
             for (Verb v : verbs) {
-                out.println("<span data-id=" + v.getId() + "><a href=\"/verbs?id=" + v.getId() + "\">" + macToCirc(v.getFirstPart()) + ", " + macToCirc(v.getSecondPart()) + "</a></span><br/>");
+                out.println("<span data-id=" + v.getId() + "><a href='/verbs?id=" + v.getId() + "'>" + sf.macToCirc(v.getFirstPart()) + ", " + sf.macToCirc(v.getSecondPart()) + "</a></span><br/>");
             }
             out.println("</div>");
 // When user clicks a verb, it runs the findOne method to select a single verb
@@ -49,12 +51,12 @@ public class VerbServlet extends HttpServlet {
                 int verbIDAsInteger = Integer.parseInt(verbID);
                 Verb thisVerb = dao.findOne(verbIDAsInteger);
                 out.println("<div id=\"verb-detail\" class=\"col-6\">");
-                out.print("<p style=\"text-size: large\">" + macToCirc(thisVerb.getFirstPart()) + ", " + macToCirc(thisVerb.getSecondPart()) + ", ");
+                out.print("<p style=\"text-size: large\">" + sf.macToCirc(thisVerb.getFirstPart()) + ", " + sf.macToCirc(thisVerb.getSecondPart()) + ", ");
 // Display third principal part if the verb has one; otherwise ---.
                 if (thisVerb.getThirdPart() == null) {
                     out.print ("---");
                 } else {
-                    out.print(macToCirc(thisVerb.getThirdPart()));
+                    out.print(sf.macToCirc(thisVerb.getThirdPart()));
                 }
 // Display fourth principal part if the verb has one; otherwise ---.
 // Deponent and semi-deponent verbs don't have the fourth part.
@@ -62,7 +64,7 @@ public class VerbServlet extends HttpServlet {
                     if (thisVerb.getSupine() == null) {
                         out.print (", ---");
                     } else {
-                        out.print(", " + macToCirc(thisVerb.getSupine()));
+                        out.print(", " + sf.macToCirc(thisVerb.getSupine()));
                     }
                 }
                 out.print ("</p>");
@@ -85,15 +87,6 @@ public class VerbServlet extends HttpServlet {
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    private String macToCirc(String stringIn) {
-        String stringOut = stringIn.replace("ā", "â");
-        stringOut = stringOut.replace("ē", "ê");
-        stringOut = stringOut.replace("ī", "î");
-        stringOut = stringOut.replace("ō", "ô");
-        stringOut = stringOut.replace("ū", "û");
-        return stringOut;
     }
 
 }
