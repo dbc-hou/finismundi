@@ -19,8 +19,8 @@ public class StringFunctions {
         html += "<script src='js/main.js'></script>";
         html += "</head><body>";
         html += "<div id='verb-container' class='container-flex'>";
-        html += "<div id='verb-row' class='row justify-content-center'>";
-        html += "<div id='verb-list' class='card col-3 border border-3 scrollable-list'><p>";
+        html += "<div id='verb-row' class='row'>";
+        html += "<div id='verb-list' class='card col-3' style='height: 300px; overflow: scroll; top: 100px; left:100px'><p>";
 
         return html;
     }
