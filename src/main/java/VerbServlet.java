@@ -50,8 +50,8 @@ public class VerbServlet extends HttpServlet {
             if (verbID != null) {
                 int verbIDAsInteger = Integer.parseInt(verbID);
                 Verb thisVerb = dao.findOne(verbIDAsInteger);
-                out.println("<div id=\"verb-detail\" class=\"col-6\">");
-                out.print("<p style=\"text-size: large\">" + sf.macToCirc(thisVerb.getFirstPart()) + ", " + sf.macToCirc(thisVerb.getSecondPart()) + ", ");
+                out.println("<div id='verb-detail' class='col-6 card' style='top: 100px'>");
+                out.print("<p style='text-size: large; color: purple'><strong>" + sf.macToCirc(thisVerb.getFirstPart()) + ", " + sf.macToCirc(thisVerb.getSecondPart()) + ", ");
 // Display third principal part if the verb has one; otherwise ---.
                 if (thisVerb.getThirdPart() == null) {
                     out.print ("---");
@@ -67,18 +67,18 @@ public class VerbServlet extends HttpServlet {
                         out.print(", " + sf.macToCirc(thisVerb.getSupine()));
                     }
                 }
-                out.print ("</p>");
+                out.print ("</strong></p>");
                 out.println();
 // Below the principal parts, display the verb's conjugation, deponency if any,
 // English meaning(s), and any notes about it.
                 out.println("<p>Conjugation " + thisVerb.getConjugation() + "</p>");
                 if (thisVerb.getDeponency() != null) {
-                    out.print(thisVerb.getDeponency());
+                    out.print("<p>" + thisVerb.getDeponency() + "</p>");
                 }
                 out.println();
-                out.println("<p>" + thisVerb.getEnglishMeanings() + "</p>");
+                out.println("<p><strong>Meanings:</strong> " + thisVerb.getEnglishMeanings() + "</p>");
                 if (thisVerb.getNotes() != null) {
-                    out.println("<p>" + thisVerb.getNotes() + "</p>");
+                    out.println("<p><strong>Notes:</strong> " + thisVerb.getNotes() + "</p>");
                 }
 // Close out the verb-detail div, the body, and the html.
                 out.println("</div></body></html>");
