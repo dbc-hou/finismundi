@@ -91,11 +91,12 @@ public class Verb {
                 ", supine='" + supine + '\'' +
                 ", conjugation='" + conjugation + '\'' +
                 ", deponency='" + deponency + '\'' +
+                ", EnglishMeanings='" + EnglishMeanings + '\'' +
                 ", notes='" + notes + '\'' +
                 '}';
     }
 
-    public Verb(int id, String firstPart, String secondPart, String thirdPart, String supine, String conjugation, String deponency, String notes) {
+    public Verb(int id, String firstPart, String secondPart, String thirdPart, String supine, String conjugation, String deponency, String EnglishMeanings, String notes) {
         this.id = id;
         this.firstPart = firstPart;
         this.secondPart = secondPart;
@@ -103,6 +104,7 @@ public class Verb {
         this.supine = supine;
         this.conjugation = conjugation;
         this.deponency = deponency;
+        this.EnglishMeanings = EnglishMeanings;
         this.notes = notes;
     }
 

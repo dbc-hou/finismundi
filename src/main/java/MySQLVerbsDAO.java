@@ -11,43 +11,6 @@ public class MySQLVerbsDAO implements VerbsDAO {
 
     public MySQLVerbsDAO() {
         try {
-//            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-//            DriverManager.registerDriver(new Driver() {
-//                @Override
-//                public Connection connect(String url, Properties info) throws SQLException {
-//                    return null;
-//                }
-//
-//                @Override
-//                public boolean acceptsURL(String url) throws SQLException {
-//                    return false;
-//                }
-//
-//                @Override
-//                public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
-//                    return new DriverPropertyInfo[0];
-//                }
-//
-//                @Override
-//                public int getMajorVersion() {
-//                    return 0;
-//                }
-//
-//                @Override
-//                public int getMinorVersion() {
-//                    return 0;
-//                }
-//
-//                @Override
-//                public boolean jdbcCompliant() {
-//                    return false;
-//                }
-//
-//                @Override
-//                public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-//                    return null;
-//                }
-//            });
             DriverManager.registerDriver(new Driver());
             conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/latin?" +

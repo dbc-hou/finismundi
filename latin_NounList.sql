@@ -1,10 +1,13 @@
 create table NounList
 (
-    Nominative      text null,
-    Genitive        text null,
-    Gender          text null,
-    Declension      text null,
-    EnglishMeanings text null
+    ID int not null auto_increment,
+    Nominative      varchar(50) null,
+    Genitive        varchar(50) null,
+    Gender          varchar(5) null,
+    Declension      varchar(10) null,
+    EnglishMeanings text null,
+    Notes text null,
+    PRIMARY KEY (id)
 );
 
 INSERT INTO latin.NounList (Nominative, Genitive, Gender, Declension, EnglishMeanings) VALUES ('abacus', 'abacī', 'm', 'II', 'abacus');
