@@ -30,17 +30,11 @@ public class VerbServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             List<Verb> verbs = dao.findAll();
             out.println(sf.pageHeadInfo());
-//            out.println("<html lang=\"en\">\n" +
-//                    "<head>\n" +
-//                    "    <meta charset=\"UTF-8\"><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"> <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"></script></head><body>");
-//            out.println("<div id=\"verb-container\" class=\"container-flex\">");
-//            out.println("<div id=\"verb-row\" class=\"row\">");
-//            out.println("<div id=\"verb-list\" class=\"col-3\"><p>");
-// Loop through and display all the first and second principal parts of each verb;
-// each span gets a data-id attribute from the ID of its verb.
-// Then close out the verb-list div.
+            out.println("<div id='verb-row' class='row col-12'>");
+            out.println("<div id='instructions' class='col-12'>Click a verb in the list to see more information about it.</div>");
+            out.println("<div id='verb-list' class='card col-3' style='height: 300px; overflow: scroll; top: 3em; left:1em'>");
             for (Verb v : verbs) {
-                out.println("<span data-id=" + v.getId() + "><a href='/verbs?id=" + v.getId() + "'>" + sf.macToCirc(v.getFirstPart()) + ", " + sf.macToCirc(v.getSecondPart()) + "</a></span><br/>");
+                out.println("<span data-id=" + v.getId() + "><a href='/verbs?id=" + v.getId() + "'>" + sf.macToCirc(v.getFirstPart()) + ", " + sf.macToCirc(v.getSecondPart()) + "</a></span>");
             }
             out.println("</div>");
 // When user clicks a verb, it runs the findOne method to select a single verb
@@ -50,7 +44,7 @@ public class VerbServlet extends HttpServlet {
             if (verbID != null) {
                 int verbIDAsInteger = Integer.parseInt(verbID);
                 Verb thisVerb = dao.findOne(verbIDAsInteger);
-                out.println("<div id='verb-detail' class='col-6 card' style='top: 100px'>");
+                out.println("<div id='verb-detail' class='col-6 card' style='top: 3em'>");
                 out.print("<p style='text-size: large; color: purple'><strong>" + sf.macToCirc(thisVerb.getFirstPart()) + ", " + sf.macToCirc(thisVerb.getSecondPart()) + ", ");
 // Display third principal part if the verb has one; otherwise ---.
                 if (thisVerb.getThirdPart() == null) {
@@ -78,10 +72,10 @@ public class VerbServlet extends HttpServlet {
                 out.println();
                 out.println("<p><strong>Meanings:</strong> " + thisVerb.getEnglishMeanings() + "</p>");
                 if (thisVerb.getNotes() != null) {
-                    out.println("<p><strong>Notes:</strong> " + thisVerb.getNotes() + "</p>");
+                    out.println("<p><strong>Notes:</strong> " + sf.macToCirc(thisVerb.getNotes()) + "</p>");
                 }
 // Close out the verb-detail div, the body, and the html.
-                out.println("</div></body></html>");
+                out.println("</div></div></body></html>");
             }
 
         } catch (IOException | SQLException e) {

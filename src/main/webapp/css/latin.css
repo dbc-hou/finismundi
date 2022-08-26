@@ -1,7 +1,21 @@
-body, html {
+/*HTML elements and some type attributes first*/
+
+body, html, #main-container {
   background-image: url("../img/pantheon.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: gold;
+}
+
+table {
+  margin-bottom: 30px;
 }
 
 tr>td {
@@ -9,9 +23,66 @@ tr>td {
   padding: .5em;
 }
 
+h1 {
+  font-size: 1em;
+  font-weight: bolder;
+  font-family: Chalkboard;
+  color: gold;
+  background-color: purple;
+  horiz-align: center;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: bolder;
+  font-family: Arial, sans-serif;
+}
+
+h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  padding-top: 10px;
+}
+
+h4 {
+  font-size: 1em;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  text-decoration: underline;
+  padding-top: 10px;
+}
+
+p {
+  font-size: medium;
+  font-family: Tahoma, sans-serif;
+}
+
+li {
+  font-size: medium;
+  font-family: Tahoma, sans-serif;
+  padding: 0;
+}
+
+li.chapter {
+  font-size: small;
+  color: black;
+}
+
+li.chapter:hover {
+  background-color: purple;
+  color: gold;
+}
+
 thead {
   background-color: purple;
   color: gold;
+}
+
+thead>tr {
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
 }
 
 label {
@@ -19,9 +90,8 @@ label {
   left: 2em;
 }
 
-button:active {
-  background-color: purple;
-  color: gold;
+blockquote {
+  margin-bottom: 30px;
 }
 
 [type=radio] {
@@ -29,7 +99,21 @@ button:active {
   background-color: whitesmoke;
 }
 
-.form-check:hover {
+/*CSS classes, including custom & Bootstrap classes*/
+.chapter:hover {
+  background-color: purple;
+  color: gold;
+}
+
+.volume-link {
+  color: black;
+}
+
+.card {
+  margin-left: 1em;
+}
+
+.form-check:hover, .volume:hover, .chapter:hover {
   background-color: purple;
   color: gold;
 }
@@ -39,30 +123,136 @@ button:active {
   left: 3em;
 }
 
-.scrollable-list {
-  background-color: lightyellow;
-  border: purple;
-  overflow-y: auto;
-  height: 300px;
-  padding: 20px;
-  margin-top: 100px;
+.chapter-link {
+  color: black;
 }
 
+.chapter-link:hover {
+  background-color: purple;
+  color: gold;
+}
+
+.btn:active, .btn:hover {
+  background-color: purple;
+  color: gold;
+}
+
+.border-1 {
+  background-color: lightyellow;
+}
+
+.th-align-center {
+  text-align: center;
+}
+
+.reveal-answer {
+  margin-bottom: 1em;
+}
+
+.reveal-vocab {
+  height: 30px;
+  width: 50px;
+  align-content: center;
+  justify-content: center;
+}
+
+.vocab-list-item {
+  height: 30px;
+}
+
+.vocab-span, .grammar-span {
+  display: none;
+  margin-left: 20px;
+}
+
+.declension, .conjugation, .matching, .hidden-declension-table {
+  display: none;
+}
+
+.show-active-conj, .show-passive-conj {
+  margin-bottom: 1.5em;
+}
+
+.review-fill-in {
+  width: 150px;
+}
+
+.no-border-table {
+  border: none;
+}
+/*Elements by ID*/
+#intro-parts, #vol-i-parts, #vol-ii-parts, #vol-iii-parts, #vol-iv-parts, #vol-v-parts, #vol-vi-parts {
+  display: none;
+  /*padding-left: 2em;*/
+}
+
+/*#content-row {*/
+/*  margin-top: 5em;*/
+/*}*/
+
+#table-of-contents {
+  position: fixed;
+  /*left: 1em;*/
+  top: 5em;
+  /*width: 300px; Don't use fixed width in conjunction with boostrap columns, silly boy!*/
+}
+
+#main-text {
+  /*position: relative;*/
+  /*top: 5em;*/
+  margin-top: 5em;
+  margin-left: 20em;
+}
+
+#site-title {
+  font-size: x-large;
+  font-weight: bolder;
+  font-family: Chalkboard;
+  color: gold;
+  background-color: purple;
+  position: fixed;
+  z-index: 3;
+  margin-bottom: 30px;
+  white-space: nowrap;
+}
+
+#site-title>h1 {
+  horiz-align: center;
+}
+
+#instructions {
+  font-size: large;
+  font-family: Chalkboard;
+  color: purple;
+  background-color: gold;
+  border: purple 1px;
+  margin-top: 50px;
+  left: 1em;
+  height: 2em;
+  text-align: center;
+}
+
+#verb-container {
+  position: relative;
+  margin-top: 30px;
+}
+
+#header-row {
+  margin-bottom: 5em;
+}
+#previous {
+  alignment: left;
+}
+
+#next {
+  alignment: right;
+}
+
+/*These ID's are peculiar to the VerbConjugation page & potentially some others.*/
 #submit-row {
   margin: 1em 0;
 }
 
 #gender-box {
-  display: none
+  display: none;
 }
-
-#verb-list {
-  background-color: lightyellow;
-  border: purple;
-  overflow: scroll;
-  height: 300px;
-  padding: 20px;
-  margin-top: 100px;
-}
-
-
